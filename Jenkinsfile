@@ -35,5 +35,6 @@ pipeline {
 		      sh 'sleep 10s'
 	        sh 'curl ec2-54-174-124-118.compute-1.amazonaws.com:9000'
 	        }
+	    }
       }
 }          
