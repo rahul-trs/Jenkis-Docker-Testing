@@ -12,8 +12,8 @@ pipeline {
 	    stage('Build Docker Image') {
 		  steps {
 	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing'
+		    sh 'VERSION=$(date +%H-%M-%S)'  
 		    sh ' cp /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing/* /var/lib/jenkins/workspace/pipeline1'
-		    sh	'VERSION=$(date +%H-%M-%S)'  
 		    sh 'docker build -t rahul9198/pipelinetest:$(VERSION) .'
 		    }
 	    }
