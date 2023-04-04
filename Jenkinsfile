@@ -5,14 +5,14 @@ pipeline {
 	    stage('Clone Repo') {
 		  steps {
 		    sh 'rm -rf Jenkis-Docker-Testing'
+		    sh 'VERSION=$(date +%H-%M-%S)'	  
 	        sh 'git clone https://github.com/rahul-trs/Jenkis-Docker-Testing.git'
 			}	
 	    }
 	
 	    stage('Build Docker Image') {
 		  steps {
-	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing'
-		    sh 'VERSION=$(date +%H-%M-%S)'  
+	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing' 
 		    sh ' cp /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing/* /var/lib/jenkins/workspace/pipeline1'
 		    sh 'docker build -t rahul9198/pipelinetest:$(VERSION) .'
 		    }
