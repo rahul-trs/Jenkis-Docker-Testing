@@ -13,7 +13,7 @@ pipeline {
 		  steps {
 	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing'
 		    sh ' cp /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing/* /var/lib/jenkins/workspace/pipeline1'
-                    sh 'docker rmi rahul9198/pipelinetest:v3'
+                    sh 'docker rmi rahul9198/pipelinetest:v2'
 		    sh 'docker build -t rahul9198/pipelinetest:v3 .'
 		    }
 	    }
