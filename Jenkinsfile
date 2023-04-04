@@ -11,16 +11,15 @@ pipeline {
 	
 	    stage('Build Docker Image') {
 		  steps {
-	        sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing'
+	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing'
 		    sh ' cp /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing/* /var/lib/jenkins/workspace/pipeline1'
-            sh 'docker rmi rahul9198/pipelinetest:v3'
+                    sh 'docker rmi rahul9198/pipelinetest:v3'
 		    sh 'docker build -t rahul9198/pipelinetest:v3 .'
 		    }
 	    }
 	
 	    stage('Push Image to Docker Hub') {
 	      steps {
-		    sh    'docker rmi rahul9198/pipelinetest:v3'
 		    sh    'docker push rahul9198/pipelinetest:v3'
 	        }
 		}
