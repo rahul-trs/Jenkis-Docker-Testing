@@ -20,6 +20,7 @@ pipeline {
 	
 	    stage('Push Image to Docker Hub') {
 	      steps {
+		    sh    'docker rmi rahul9198/pipelinetest:v3'
 		    sh    'docker push rahul9198/pipelinetest:v3'
 	        }
 		}
