@@ -13,20 +13,20 @@ pipeline {
 		  steps {
 	            sh 'cd /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing' 
 		    sh ' cp /var/lib/jenkins/workspace/pipeline1/Jenkis-Docker-Testing/* /var/lib/jenkins/workspace/pipeline1'
-		    sh 'docker build -t rahul9198/pipelinetestprod:v5 .'
+		    sh 'docker build -t rahul9198/pipelinetestprod:v6 .'
 		    }
 	    }
 	
 	    stage('Push Image to Docker Hub') {
 	      steps {
-		    sh    'docker push rahul9198/pipelinetestprod:v5'
+		    sh    'docker push rahul9198/pipelinetestprod:v6'
 	        }
 		}
 	
 	    stage('Deploy to Docker Host') {
 		    steps {
 		sh 'docker -H tcp://10.0.25.162:2375 rm -f webappprod1'	    
-	        sh 'docker -H tcp://10.0.25.162:2375 run --rm -dit -p 7000:80 --name webappprod1 --hostname webappprod1 rahul9198/pipelinetestprod:v5'
+	        sh 'docker -H tcp://10.0.25.162:2375 run --rm -dit -p 7000:80 --name webappprod1 --hostname webappprod1 rahul9198/pipelinetestprod:v6'
 	        }
        }
 	
